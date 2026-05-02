@@ -574,6 +574,32 @@
       transform-style: preserve-3d;
       backface-visibility: visible;
     }
+
+    .header-text-main {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+    }
+
+    .animate-wiggle {
+      display: inline-block;
+      animation: wiggle 1.5s ease-in-out;
+      font-size: 2rem;
+
+    }
+
+    @keyframes wiggle {
+
+      0%,
+      100% {
+        transform: rotate(-5deg);
+      }
+
+      50% {
+        transform: rotate(3deg);
+      }
+    }
   </style>
   <nav class="main-nav">
     <a href="#projects">Projects</a>
@@ -588,7 +614,10 @@
   <div class="container">
     <header class="header-container">
       <div class="header-text">
-        <h1>Hi, I'm Ayush Thapa. 👋</h1>
+        <div class="header-text-main">
+          <h1>Hi, I'm Ayush Thapa. </h1>
+          <span class="animate-wiggle">👋</span>
+        </div>
 
         <p class="exp-title2"> based in WestBengal, India.</p>
         <p class="exp-title2"> 3rd Year <strong>Data Science Student</strong> &
