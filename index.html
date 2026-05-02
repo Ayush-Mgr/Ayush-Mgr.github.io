@@ -584,9 +584,14 @@
 
     .animate-wiggle {
       display: inline-block;
-      animation: wiggle 1.5s ease-in-out;
+      animation-delay: 2s;
+      animation: wiggle 1.5s 2 ease-in-out;
       font-size: 2rem;
+      cursor: default;
+    }
 
+    .header-text-main:hover .animate-wiggle {
+      animation: wiggle 0.8s ease-in-out infinite;
     }
 
     @keyframes wiggle {
