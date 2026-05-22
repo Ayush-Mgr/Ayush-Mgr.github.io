@@ -183,6 +183,7 @@
         color: #888;
         cursor: pointer;
         box-sizing: border-box;
+        border-radius: 6px;
     }
 
     .tab-btn.active {
