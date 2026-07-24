@@ -25,38 +25,9 @@ def main():
         "changefreq": "daily"
     })
     
-    # 3. Fetch graph-data.json from the live site
-    print(f"Fetching from {NODE_NOTES_URL}...")
-    try:
-        req = urllib.request.Request(NODE_NOTES_URL, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req) as response:
-            data = json.loads(response.read().decode('utf-8'))
-            
-        nodes = data.get("nodes", [])
-        note_count = 0
-        for node in nodes:
-            # Filter out ghost nodes and assets
-            if node.get("ghost") or node.get("id", "").startswith("Assets"):
-                continue
-            
-            note_id = node.get("id")
-            if not note_id:
-                continue
-                
-            encoded_id = urllib.parse.quote(note_id, safe='')
-            note_url = f"https://ayush-mgr.github.io/Node-Notes/#note={encoded_id}"
-            
-            urls.append({
-                "loc": note_url,
-                "priority": "0.7",
-                "changefreq": "weekly"
-            })
-            note_count += 1
-            
-        print(f"Processed {note_count} individual notes.")
-    except Exception as e:
-        print(f"Failed to fetch or parse graph-data.json: {e}")
-        return
+    # Note: We do not include SPA hash fragment URLs (#note=...) because search engines (like Google)
+    # ignore fragment identifiers and treat them all as the base URL https://ayush-mgr.github.io/Node-Notes/.
+
 
     # Generate XML
     xml_content = ['<?xml version="1.0" encoding="UTF-8"?>']
